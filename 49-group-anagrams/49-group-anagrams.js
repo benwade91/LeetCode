@@ -10,6 +10,5 @@ var groupAnagrams = function(strs) {
         map[sortedWord] = [...(map[sortedWord] ?? []), word]
     }
     for(const word in map) res.push([...map[word]])
-    console.log(map)
     return res
 };
