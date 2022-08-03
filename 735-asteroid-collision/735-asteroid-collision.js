@@ -10,7 +10,6 @@ var asteroidCollision = function(asteroids) {
         if(curr > 0) res.push(curr);
         else if(curr < 0 && !res.length) res.push(curr);
         else{
-            console.log(res)
             while(res.length){
                 if(res[res.length-1] < 0) {
                     res.push(curr);
