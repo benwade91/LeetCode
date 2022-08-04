@@ -8,8 +8,7 @@ var climbStairs = function(n) {
     let b = 2;
     while(n-- > 2){
         let temp = b;
-        b += a;
-        a = temp;
+        [b, a] = [b+a, temp]
     }
     return b
 };
