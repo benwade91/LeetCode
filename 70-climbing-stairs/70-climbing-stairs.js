@@ -3,12 +3,11 @@
  * @return {number}
  */
 var climbStairs = function(n) {
-    if(n < 3) return n;
-    let a = 1;
-    let b = 2;
-    while(n-- > 2){
-        let temp = b;
-        [b, a] = [b+a, temp]
+    let dp = []
+    dp[1] = 1;
+    dp[2] = 2;
+    for(let i = 3; i <= n; i++){
+        dp[i] = dp[i-1] + dp[i-2];
     }
-    return b
+    return dp[n]
 };
