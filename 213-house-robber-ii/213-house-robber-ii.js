@@ -12,6 +12,5 @@ var rob = function(nums) {
     for(let i = 2; i < nums.length; i++){
         dp2[i] = Math.max(dp2[i-1], dp2[i-2] + nums[i])
     }
-    console.log(dp1,dp2)
     return Math.max(dp1.pop(), dp2.pop())
 };
