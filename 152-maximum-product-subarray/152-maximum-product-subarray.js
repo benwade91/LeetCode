@@ -11,7 +11,6 @@ var maxProduct = function(nums) {
         max = Math.max(curr * nums[i], min * nums[i], nums[i])
         min = Math.min(curr * nums[i], min * nums[i], nums[i])
         res = Math.max(res, max);
-        console.log(min, max, res)
     }
     return res
 };
