@@ -11,7 +11,7 @@ var searchMatrix = function(matrix, target) {
         let l = 0, r = matrix[0].length-1;
         while(l < r){
             let mid = Math.floor((l+r)/2);
-            if(matrix[i][mid] == target || matrix[i][l] == target) return true;
+            if(matrix[i][mid] == target) return true;
             if(matrix[i][mid] < target) l = mid+1;
             else r = mid-1
         }
