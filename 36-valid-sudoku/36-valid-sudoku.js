@@ -3,52 +3,20 @@
  * @return {boolean}
  */
 var isValidSudoku = function(board) {
-    const squareIndices = [[0,0], [0,3], [0,6],
-                          [3,0], [3,3], [3,6],
-                          [6,0], [6,3], [6,6],]
-    
-    for(let i of squareIndices){
-        const [a,b] = i;
-        if(!checkBox(a,b)) return false;
-    }
-    
-    for(let i = 0; i < board.length; i++){
-        if(!checkRow(i)) return false
-        if(!checkCol(i)) return false
-    }
-    
-    return true
-    
-    function checkRow(x){
-        let set = new Set();
-        for(let i = 0; i < board.length; i++){
-            if(board[x][i] == '.') continue;
-            if(set.has(board[x][i])) return false;
-            set.add(board[x][i])
+    let badNums = new Set();
+    for(let row = 0; row < board.length; row++){
+        for(let col = 0; col < board.length; col++){
+            if(board[row][col] == '.') continue;
+            let rowCheck = `row: ${row} value: ${board[row][col]}`
+            let colCheck = `col: ${col} value: ${board[row][col]}`
+            let boxCheck = `box: [${Math.floor(row/3)},${Math.floor(col/3)}], value: ${board[row][col]}`
+            
+            if(badNums.has(rowCheck) || badNums.has(colCheck) || badNums.has(boxCheck)) return false;
+            
+            badNums.add(rowCheck)
+            badNums.add(colCheck)
+            badNums.add(boxCheck)
         }
-        return true
     }
-    
-    function checkCol(y){
-        let set = new Set();
-        for(let i = 0; i < board.length; i++){
-            if(board[i][y] == '.') continue;
-            if(set.has(board[i][y])) return false;
-            set.add(board[i][y])
-        }
-        return true
-    }
-    
-    function checkBox(x,y){
-        let set = new Set();
-        for(let i = x; i < x+3; i++){
-            for(let j = y; j<y+3; j++){
-                if(board[i][j] == '.')continue;
-                if(set.has(board[i][j])) return false;
-                set.add(board[i][j])
-            }
-        }
- 
-        return true;
-    }
+    return true;
 };
