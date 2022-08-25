@@ -2,6 +2,9 @@
  * @param {number[]} nums
  * @return {number}
  */
+
+//create Set of 'nums' and delete nums from set as you iterate
+
 var longestConsecutive = function(nums) {
     let set = new Set(nums);
     let max = 0;
@@ -14,7 +17,7 @@ var longestConsecutive = function(nums) {
             set.delete(temp)
             temp--
         }
-//         count from the number going forward, deleting as you go
+//         count from the number going forward, deleting from the set  as you go
         while(set.has(num)){
             count++
             set.delete(num)
