@@ -43,13 +43,7 @@ var isValidSudoku = function(board) {
         let set = new Set();
         for(let i = x; i < x+3; i++){
             for(let j = y; j<y+3; j++){
-                
-                if(x==0 && y == 3) console.log(i,j)
-                
                 if(board[i][j] == '.')continue;
-                
-                
-                
                 if(set.has(board[i][j])) return false;
                 set.add(board[i][j])
             }
