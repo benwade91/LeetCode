@@ -18,7 +18,7 @@ var sumOfLeftLeaves = function(root) {
             sum += node.val;
         helper(node.left, true);
         helper(node.right);
-  }
+    }
     helper(root)
-  return sum;
+    return sum;
 };
