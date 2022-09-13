@@ -17,7 +17,6 @@ var reorganizeString = function(s) {
             if(index >= s.length) index = 1;
             res[index] = sorted[i];
             index += 2;
-            console.log(res)
         }
     }
     return res.join('');
