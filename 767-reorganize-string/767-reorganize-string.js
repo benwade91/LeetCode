@@ -10,9 +10,10 @@ var reorganizeString = function(s) {
     let res = [], 
         index = 0;
     
+    if(map[sorted[0]] > Math.ceil(s.length / 2)) return "";
+       
     for(let i = 0; i < sorted.length; i++){
         let curr = map[sorted[i]];
-        if(curr > parseInt((s.length + 1)/2)) return "";
         for(let j = 0; j < curr; j++){
             if(index >= s.length) index = 1;
             res[index] = sorted[i];
