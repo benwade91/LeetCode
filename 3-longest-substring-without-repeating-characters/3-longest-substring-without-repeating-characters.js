@@ -3,6 +3,9 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
+    /*
+    Using a hashmap to store 
+    */
     let res = 0, l = 0, r = 0, map = {}
     while(r < s.length){
         if(map[s[r]]){
