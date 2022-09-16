@@ -3,18 +3,28 @@
  * @param {number} target
  * @return {number}
  */
-var search = function(nums, target) {
-    let mid = Math.floor(nums.length / 2);
-    let left = 0, right = nums.length-1;
-    while(left < right){
-        if(nums[mid] == target) return mid;
-        if(nums[mid] > target){
-            right = mid-1;
-            mid = Math.floor((right+left) / 2);
-        } else {
-            left = mid+1;
-            mid = Math.floor((right+left) / 2);
+var search = function(arr, x) {
+    const powers = makePowersOfTwo(arr.length - 1);
+
+    let i = 0;
+    if (arr[i] === x) return i;
+    for (let pI = powers.length - 1; pI >= 0; pI -= 1) { // iterate over powers backward
+        const power = powers[pI];
+        if (i + power < arr.length && x >= arr[i + power]) {
+        i += power;
+      
+        if (arr[i] === x) return i;
         }
     }
-    return nums[left] == target ? left : -1
-};
+    
+    return -1;
+    };
+
+function makePowersOfTwo(lowerThan) { // -> array
+  let result = []
+  for(let i = 1; i <= lowerThan; i+=i) {
+    result.push(i);
+  }
+  return result;
+
+}
