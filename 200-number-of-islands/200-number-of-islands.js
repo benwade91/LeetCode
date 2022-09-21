@@ -7,6 +7,7 @@ var numIslands = function(grid) {
     let count = 0;
     for(let i = 0; i < grid.length; i++){
         for(let j = 0; j < grid[0].length; j++){
+            if(visited.has(`${i}, ${j}`)) continue
             if(!visited.has(`${i}, ${j}`) && grid[i][j] == '1'){
                 count++;
                 checkIsland(i, j)
