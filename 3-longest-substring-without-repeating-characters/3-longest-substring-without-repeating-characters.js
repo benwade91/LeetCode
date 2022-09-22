@@ -3,21 +3,20 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
-    /*
-    Using a hashmap to store 
-    */
-    let res = 0, l = 0, r = 0, map = {}
-    while(r < s.length){
-        if(map[s[r]]){
-            while(map[s[r]]){
-                map[s[l]] = 0;
-                l++
-            }
+    let map = {}
+    let max = 0;
+    let count = 0
+    for(let i = 0; i < s.length; i++){
+        if(map[s[i]] === undefined){
+            map[s[i]] = i;
+            count++;
+            max = Math.max(count, max)
         } else {
-            map[s[r]] = 1;
-            res = Math.max(res, 1+r-l);
-            r++
+            i = map[s[i]];
+            map = {}
+            count = 0;
+            
         }
     }
-    return res
+    return max
 };
