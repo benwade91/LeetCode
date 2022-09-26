@@ -9,7 +9,7 @@ var validateStackSequences = function(pushed, popped) {
     let i = 0;
     for(let num of pushed){
         stack.push(num);
-        while(stack.length > 0 && i < size && stack[stack.length -1] === popped[i]){
+        while(stack && i < size && stack[stack.length -1] === popped[i]){
             stack.pop()
             i++
         }
