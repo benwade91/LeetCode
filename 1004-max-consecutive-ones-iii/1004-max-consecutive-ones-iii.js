@@ -13,7 +13,6 @@ var longestOnes = function(nums, k) {
             k += 1 - nums[l];
             l++
         }
-        console.log(l,r,k)
     }
     return r - l
 };
