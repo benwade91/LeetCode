@@ -1,44 +1,59 @@
-/**
- * @param {character[][]} board
- * @param {string[]} words
- * @return {string[]}
- */
-
 var findWords = function(board, words) {
-    let res = [];
-    let trie = {};
-    for(let word of words){
-        let curr = trie
-        for(let c of word){
-            if(!curr[c]) curr[c] = {}
-            curr = curr[c]
+    const trie = {};
+    
+    // hydrate trie using our words array
+    // ['a', 'b', 'as']
+    // { a: { s: { word: 'as' }, word: 'a' }, b: { word: 'b' }}
+    words.forEach((word) => {
+        let node = trie;
+        for (let letter of word) {
+            if (!node[letter]) node[letter] = {};
+            node = node[letter];
         }
-        curr.end = word;
+        node.word = word;
+    })
+    for (let word of words) {
+        let node = trie;
+        for (let letter of word) {
+            if (!node[letter]) node[letter] = {};
+            node = node[letter];
+        }
+        node.word = word;
     }
     
-    function dfs(r,c, node=trie){
-        if(r < 0 || r >= board.length || c < 0 || c >= board[0].length) return;
-
-        let char = board[r][c]
-        let curr = node[char]
-        if(!curr) return;
-        if(curr.end){
-            res.push(curr.end)
-            curr.end = undefined
-        }
-        let directions = [[1,0],[-1,0],[0,1],[0,-1]]
-        for(let [x,y] of directions){
-            let temp = board[r][c]
-            board[r][c] = null
-            dfs(r+x, c+y, curr)
-            board[r][c] = temp
+    const backtrack = (row, col, node = trie) => {   
+        if (row < 0 || row >= board.length || col < 0 || col >= board[row].length) return;
+        
+        const letter = board[row][col];
+        if (!node[letter]) return;
+        
+        const directions = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+        const current = node[letter];
+        
+        if (current.word) {
+            matched.push(current.word);
+            current.word = null;
         }
         
-    }
-    for(let i = 0; i < board.length; i++){
-        for(let j = 0; j < board[0].length; j++){
-            if(trie[board[i][j]]) dfs(i,j)
+        for (let [x, y] of directions) {
+            // check if you can go down current trie node path through any neighbors on the board
+            let temp = board[row][col];
+            board[row][col] = null;
+            backtrack(row + x, col + y, current);
+            board[row][col] = temp;
+        }
+    };
+        
+    const matched = [];
+    
+    for (let row = 0; row < board.length; row++) {
+        for (let col = 0; col < board[row].length; col++) {
+            const letter = board[row][col];
+            if (trie[letter]) {
+                backtrack(row, col);
+            }
         }
     }
-    return res
-};
+    
+    return matched
+}
