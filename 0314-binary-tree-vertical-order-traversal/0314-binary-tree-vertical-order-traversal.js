@@ -11,7 +11,7 @@
  * @return {number[][]}
  */
 var verticalOrder = function(root) {
-    if(!root) return []
+    if(!root) return [];
     let res = [];
     let map = {};
     let min = 0;
@@ -23,13 +23,13 @@ var verticalOrder = function(root) {
         min = Math.min(min, i);
         if(map[i]) map[i].push(node.val);
         else map[i] = [node.val];
-        if(node.left) queue.push([node.left, i-1])
-        if(node.right) queue.push([node.right, i+1])
+        if(node.left) queue.push([node.left, i-1]);
+        if(node.right) queue.push([node.right, i+1]);
     }
     
     while(map[min]){
-        res.push(map[min])
-        min++
+        res.push(map[min]);
+        min++;
     }
-    return res
+    return res;
 };
