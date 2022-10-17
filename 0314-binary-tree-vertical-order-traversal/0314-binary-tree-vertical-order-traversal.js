@@ -21,15 +21,12 @@ var verticalOrder = function(root) {
     while(queue.length){
         const [node, i] = queue.shift();
         min = Math.min(min, i);
-        if(map[i]) map[i].push(node.val);
-        else map[i] = [node.val];
+        map[i] = map[i] ? [...map[i], node.val] : [node.val];
         if(node.left) queue.push([node.left, i-1]);
         if(node.right) queue.push([node.right, i+1]);
     }
     
-    while(map[min]){
-        res.push(map[min]);
-        min++;
-    }
+    while(map[min]) res.push(map[min++]);
+    
     return res;
 };
