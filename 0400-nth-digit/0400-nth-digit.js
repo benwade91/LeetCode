@@ -14,6 +14,5 @@ var findNthDigit = function(n) {
     }
     first += Math.floor((n-1)/length)
     first = String(first);
-    console.log(first, n% length)
     return Number(first[(n-1) % length])
 };
