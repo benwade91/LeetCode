@@ -4,9 +4,7 @@
  * @return {number}
  */
 var minDistance = function(str1, str2) {
-    // if(!str1.length) str1 = " "
-    // if(!str2.length) str2 = " "
-    if(str1.length > str2.length) [str1, str2] = [str2, str1];
+  if(str1.length > str2.length) [str1, str2] = [str2, str1];
   let table = Array(str1.length + 1).fill().map(()=>Array(str2.length+1).fill(0))
   let a = ["", ...str2.split('')]
   let b = ["", ...str1.split('')]
