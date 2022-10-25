@@ -35,5 +35,5 @@ var str2tree = function(s) {
         }
         
     }
-    return stack[0]
+    return stack.pop()
 };
