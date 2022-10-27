@@ -2,6 +2,15 @@
  * @param {number[]} nums
  * @param {number} goal
  * @return {number}
+ 
+ count: 4
+ {
+ 0:1
+ 1:2
+ 2:2
+ 3:1
+ }
+ 
  */
 var numSubarraysWithSum = function(nums, goal) {
     let count = 0;
