@@ -13,7 +13,7 @@ var lastStoneWeight = function(stones) {
         let sorted = false;
         while(!sorted){
 //             if last stone is greatest, stones are sorted
-            if(stones[stones.length-1] > stones[i]) sorted = true;
+            if(stones[stones.length-1] >= stones[i]) sorted = true;
             else {
 //                 while stone is out of order, bubble down;
                 while(stones[i+1] < stones[i]){
