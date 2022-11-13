@@ -11,10 +11,10 @@
  * @return {boolean}
  */
 var isUnivalTree = function(root) {
-    const dfs = (node, val=root.val) => {
+    const dfs = (node) => {
         if(!node) return true;
-        if(node.val !== val) return false;
-        return dfs(node.left, val) && dfs(node.right, val)
+        if(node.val !== root.val) return false;
+        return dfs(node.left) && dfs(node.right)
     }
     return dfs(root);
 };
