@@ -16,6 +16,7 @@ var minDepth = function(root) {
     let stack = [[root, 1]];
     while(stack.length){
         let [node, depth] = stack.pop();
+        if(depth > min) continue;
         if(!node.right && !node.left) min = Math.min(depth, min);
         if(node.left) stack.push([node.left, depth+1])
         if(node.right) stack.push([node.right, depth+1])
