@@ -22,22 +22,3 @@ var countAndSay = function(n) {
     }
     return str;
 };
-
-// var countAndSay = function(n) {
-//     if (n === 1) return "1";
-    
-//     const numStr = countAndSay(n - 1);
-    
-//     let result = "";
-//     let idx = 0;
-//     while (idx < numStr.length) {
-//         let count = 0;
-//         const num = numStr[idx];
-//         while (numStr[idx] === num) {
-//             count++;
-//             idx++;
-//         }
-//         result += count + num;
-//     }
-//     return result;
-// };
