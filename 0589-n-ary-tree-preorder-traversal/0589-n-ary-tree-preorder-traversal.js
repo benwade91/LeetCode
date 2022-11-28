@@ -12,13 +12,11 @@
  */
 var preorder = function(root) {
     let res = [];
-    let queue = [root];
-    while(queue.length){
-        let node = queue.pop();
-        if(node){
-            res.push(node.val);
-            queue.push(...node.children.reverse())   
-        }
+    const helper = (node) => {
+        if(!node) return;
+        res.push(node.val);
+        for(let kid of node.children) helper(kid);
     }
+    helper(root);
     return res;
 };
