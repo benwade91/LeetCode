@@ -12,6 +12,7 @@ var longestLine = function(mat) {
         for(let j = 0; j < c; j++){
             if(mat[i][j] == 0) continue;
             for(let d of directions) helper(i,j,d,0)
+            mat[i][j] = 0;
         }
     }
     
