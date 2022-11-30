@@ -30,7 +30,7 @@ var longestLine = function(mat) {
     return res;
     
     function helper(x,y, dir, count) {
-        if(x == r || x < 0 || y == c || y < 0 || mat[x][y] == 0){
+        if(x == r || x < 0 || y == c || y < 0 || !mat[x][y]){
             res = Math.max(count, res)
             return;
         }
